@@ -1,0 +1,21 @@
+Interrupts table:
+http://staff.ustc.edu.cn/~xyfeng/research/cos/resources/BIOS/Resources/assembly/inttable.html
+
+8086 comands:
+https://www.tutorialspoint.com/microprocessor/microprocessor_8086_instruction_sets.htm
+
+Intel instruction Set Page:
+https://web.itu.edu.tr/kesgin/mul06/intel/index.html
+
+Screen buffer: 0xb8000, first byte ASCII code, second byte attribytes.
+0xb8000-0xb8f9f - screen buffer.
+
+Mod 0x13:
+320x200x256 (colors, paletteized)
+every pixel: 1 byte - 0x00 to 0xff
+VGA Video RAM: 0xa000 Segment paragraph address
+	offset range: 0x0-0xfa00
+to plot a pixel:
+	offset = y * 320 + x
+
+shl reg, cl - shift in 8086, shl reg, 4 - come in 80186

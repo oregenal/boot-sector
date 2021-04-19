@@ -1,0 +1,12 @@
+run:disk.img
+	qemu-system-x86_64 -cpu 486 -drive format=raw,if=floppy,file=$<
+	@#dosbox
+
+%.bin:%.asm
+	nasm -fbin -llisting.txt $< -o $@
+
+disk.img:loader.bin kernel.bin
+	cat $^ > $@
+
+clean:
+	rm -rf *.bin disk.img listing.txt
