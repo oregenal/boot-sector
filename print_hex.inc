@@ -19,9 +19,9 @@ _print_hex:
 	and al, 0x0f		;get low 4 bytes
 	cmp al, 0x09
 	jg .great		;if greater 0x09
-	add al, 0x39		;then number ASCII
+	add al, 0x30		;then number ASCII
 	jmp .next		;else
-.great:	add al, 0x61		;letter ASCII
+.great:	add al, 0x57		;letter ASCII
 	
 .next	mov es:[di+0x05], al	;move to variable string
 	add cl, 0x04

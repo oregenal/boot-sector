@@ -8,6 +8,7 @@
 	jmp start
 
 %include "print.inc"
+%include "print_hex.inc"
 
 	;Print string.
 	;input - string pointer
@@ -19,20 +20,15 @@ start:	mov ax, string1
 	mov ax, string3
 	print ax
 
-	mov ax, string4
-	push ax
-	call prt_str
-	add sp, 0x02
+	mov ax, es
+	print_hex ax
 
 	HLT		;halts CPU untill reset
 	;jmp $
-
-%include "print_string.inc"
 
 
 string1	db	"Kernel loaded.", 0x0A, 0x0D, 0
 string2	db	"AUGHTUNG!!! AUGHTUNG!!!", 0x0A, 0x0D, 0
 string3	db	"Pokryshkin in der luft!", 0x0A, 0x0D, 0
-string4 db	"Hello from BOIS print string!", 0
 
 	times 512-($-$$) db 0

@@ -37,7 +37,7 @@ start:	mov ah, 0x00
 	pop es
 
 	; Print hexidecimal al.
-	mov ax, 0xaf48
+	mov ax, es
 	print_hex ax
 
 	; Press any key
