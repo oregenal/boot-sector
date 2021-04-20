@@ -37,8 +37,7 @@ start:	mov ah, 0x00
 	pop es
 
 	; Print hexidecimal al.
-	mov ax, es
-	print_hex ax
+	print_hex es
 
 	; Press any key
 	mov ax, press_key
@@ -62,9 +61,14 @@ start:	mov ah, 0x00
 	int 0x13
 
 	jc error	;if reading error, 'CF flag set'
-	pop cx
-	cmp al, cl
+	pop cx		;restore number to read
+	cmp al, cl	;if it match with number of readed
 	jne error
+
+	;set segment registers
+	mov ax, LOAD_ADDRES
+	mov ds, ax
+	mov ss, ax
 
 	;jump in
 	jmp [es:bx]
@@ -73,12 +77,13 @@ start:	mov ah, 0x00
 error:	mov ax, err_msg
 	print ax
 
-	jmp $
+	hlt
+	;jmp $
 
 
 err_msg		db	"Disk reading error!", 0x0A, 0x0D ,0
 wellcome	db	"Bootsector loaded.", 0x0A, 0x0D ,0
-press_key	db	"Press any key for loading kernel.", 0x0a, 0x0d 0
+press_key	db	"Press any key for load kernel.", 0x0a, 0x0d 0
 
 	; Bootsector magic
 	times 510-($-$$) db 0

@@ -20,8 +20,10 @@ start:	mov ax, string1
 	mov ax, string3
 	print ax
 
-	mov ax, es
-	print_hex ax
+	print_hex es
+	print_hex cs
+	print_hex ds
+	print_hex ss
 
 	HLT		;halts CPU untill reset
 	;jmp $

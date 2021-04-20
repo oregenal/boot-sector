@@ -14,9 +14,9 @@ _print:	push bp
 	mov ah, 0x0E
 	mov si, [bp+4]		;geting string pointer
 	xor bh, bh		;page number
-.lo:	cmp es:[si], byte 0	;checking terminator end of line
+.lo:	cmp [si], byte 0	;checking terminator end of line
 	je .exit		;exit if so
-	mov al, es:[si]		;print character by BIOS
+	mov al, [si]		;print character by BIOS
 	int 0x10
 	inc si			;next character
 	jmp .lo
