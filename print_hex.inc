@@ -23,7 +23,7 @@ _print_hex:
 	jmp .next		;else
 .great:	add al, 0x57		;letter ASCII
 	
-.next	mov es:[di+0x05], al	;move to variable string
+.next	mov [di+0x05], al	;move to variable string
 	add cl, 0x04
 	sub di, 0x01
 	cmp cl, 0x0c

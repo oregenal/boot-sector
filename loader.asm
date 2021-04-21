@@ -1,10 +1,10 @@
 ; Boot sector.
 ;
 
-;BITS 16
+BITS 16
 CPU 8086
 
-LOAD_ADDRES	equ 0x0100	;kernel loading addres offset 'ES'
+LOAD_ADDRES	equ 0x7f00	;kernel loading addres
 
 
 	org 0x7c00
@@ -36,9 +36,6 @@ start:	mov ah, 0x00
 	mov es:[bx], byte 'Z'
 	pop es
 
-	; Print hexidecimal al.
-	print_hex es
-
 	; Press any key
 	mov ax, press_key
 	print ax
@@ -55,9 +52,9 @@ start:	mov ah, 0x00
 	mov cl, 2	;sector number
 	mov dh, 0	;head number
 	mov dl, 0	;drive number
-	mov bx, LOAD_ADDRES	;offset
-	mov es, bx
 	xor bx, bx	;buffer pointer EX:BX
+	mov es, bx
+	mov bx, LOAD_ADDRES	;offset
 	int 0x13
 
 	jc error	;if reading error, 'CF flag set'
@@ -65,20 +62,22 @@ start:	mov ah, 0x00
 	cmp al, cl	;if it match with number of readed
 	jne error
 
-	;set segment registers
+	;jump in kernel
 	mov ax, LOAD_ADDRES
-	mov ds, ax
-	mov ss, ax
-
-	;jump in
-	jmp [es:bx]
+	shr ax, 1
+	shr ax, 1
+	shr ax, 1
+	shr ax, 1
+	push ax		;segment value
+	xor ax, ax
+	push ax		;offset value
+	retf		;jump far segment:offset
 
 	;read error
 error:	mov ax, err_msg
 	print ax
 
 	hlt
-	;jmp $
 
 
 err_msg		db	"Disk reading error!", 0x0A, 0x0D ,0

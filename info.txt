@@ -1,3 +1,6 @@
+Tech Help:
+http://old-dos.ru/files/file_1067.html
+
 Interrupts table:
 http://staff.ustc.edu.cn/~xyfeng/research/cos/resources/BIOS/Resources/assembly/inttable.html
 
