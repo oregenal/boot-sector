@@ -1,6 +1,7 @@
+.PHONY:run clean
+
 run:disk.img
 	qemu-system-x86_64 -cpu 486 -drive format=raw,if=floppy,file=$<
-	@#dosbox
 
 %.bin:%.asm
 	nasm -fbin -llisting.txt $< -o $@

@@ -4,6 +4,7 @@
 	mov ax, cs
 	mov ds, ax
 	mov ss, ax
+	mov es, ax
 
 	jmp start
 
