@@ -8,6 +8,13 @@ LOAD_ADDRES	equ 0x7f00	;kernel loading addres
 
 
 	org 0x7c00
+
+	; Setup segment registers
+	mov ax, cs
+	mov ds, ax
+	mov ss, ax
+	mov es, ax
+
 	jmp start
 
 %include "print.inc"
