@@ -1,7 +1,6 @@
 ; Boot sector.
 ;
 
-BITS 16
 CPU 8086
 
 LOAD_ADDRES	equ 0x7f00	;kernel loading addres
