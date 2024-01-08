@@ -4,6 +4,8 @@ CPU 8086
 
 ;; Global variables
 
+segment _kernel
+
 STR_BUFFER	equ	0xb800
 
 	;set segment registers

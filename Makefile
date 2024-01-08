@@ -3,11 +3,11 @@
 run:disk.img
 	qemu-system-x86_64 -vga virtio -full-screen -enable-kvm -cpu 486 -drive format=raw,if=floppy,file=$<
 
-%.bin:%.asm
-	nasm -fbin -llisting.txt $< -o $@
+%.o:%.asm
+	nasm -felf32 $< -o $@
 
-disk.img:loader.bin kernel.bin
-	cat $^ > $@
+disk.img:loader.o kernel.o
+	ld -melf_i386 -nostdlib --oformat=binary -T config.ld -o $@ $^
 
 clean:
-	rm -rf *.bin disk.img listing.txt
+	rm -rf *.o *.bin disk.img listing.txt
