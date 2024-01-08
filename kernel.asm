@@ -1,8 +1,10 @@
 ; Kernel
 
-CPU 8086
+BITS 16
 
 ;; Global variables
+
+segment _kernel
 
 STR_BUFFER	equ	0xb800
 

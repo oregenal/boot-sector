@@ -1,13 +1,24 @@
+ASM=nasm
+ASMFLAGS=-felf32 -w+gnu-elf-extensions
+LD=ld
+LDFLAGS=-melf_i386 -nostdlib --oformat=binary -T config.ld -Map=$(MAPFILE)
+OBJFILES=loader.o kernel.o
+
+MAPFILE=disk.map
+DISKFILE=disk.img
+
 .PHONY:run clean
 
-run:disk.img
-	qemu-system-x86_64 -vga virtio -full-screen -enable-kvm -cpu 486 -drive format=raw,if=floppy,file=$<
+run:$(DISKFILE)
+	qemu-system-x86_64 -vga virtio\
+		-full-screen -enable-kvm -cpu 486\
+		-drive format=raw,if=floppy,file=$<
 
-%.bin:%.asm
-	nasm -fbin -llisting.txt $< -o $@
+%.o:%.asm
+	$(ASM) $(ASMFLAGS) -o $@ $< 
 
-disk.img:loader.bin kernel.bin
-	cat $^ > $@
+disk.img:$(OBJFILES)
+	$(LD) $(LDFLAGS) -o $@ $^
 
 clean:
-	rm -rf *.bin disk.img listing.txt
+	rm -rf *.o *.bin $(DISKFILE) $(MAPFILE)
