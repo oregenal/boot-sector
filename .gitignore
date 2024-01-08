@@ -2,3 +2,4 @@ disk.img
 kernel.bin
 listing.txt
 loader.bin
+*.o
