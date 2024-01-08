@@ -7,7 +7,7 @@ run:disk.img
 	nasm -felf32 $< -o $@
 
 disk.img:loader.o kernel.o
-	ld -melf_i386 -nostdlib --oformat=binary -T config.ld -o $@ $^
+	ld -melf_i386 -nostdlib --oformat=binary -T config.ld -o $@ $^ -Map=disk.map
 
 clean:
 	rm -rf *.o *.bin disk.img listing.txt
