@@ -1,5 +1,5 @@
 ASM=nasm
-ASMFLAGS=-felf32
+ASMFLAGS=-felf32 -w+gnu-elf-extensions
 LD=ld
 LDFLAGS=-melf_i386 -nostdlib --oformat=binary -T config.ld -Map=$(MAPFILE)
 OBJFILES=loader.o kernel.o
