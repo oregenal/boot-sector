@@ -1,6 +1,6 @@
 ; Kernel
 
-CPU 8086
+BITS 16
 
 ;; Global variables
 
