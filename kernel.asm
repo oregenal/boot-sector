@@ -4,7 +4,7 @@ BITS 16
 
 ;; Global variables
 
-segment _kernel
+segment .kernel
 
 STR_BUFFER	equ	0xb800
 

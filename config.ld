@@ -33,19 +33,19 @@ SECTIONS
 	lma - load addres
 	*/
 
-	_boot :
+	.boot :
 	{
-		*(_boot)
+		*(.boot)
 	}> BOOT
 
-	_bootmag :
+	.bootmag :
 	{
-		*(_bootmag)
+		*(.bootmag)
 	}> BOOTMAGIC
 
-	_kernel :
+	.kernel :
 	{
-		*(_kernel)
+		*(.kernel)
 	}> KERNEL
 
 }

@@ -6,7 +6,7 @@ BITS 16
 LOAD_ADDRES	equ 0x7f00	;kernel loading addres
 
 
-segment _boot
+segment .boot
 	;org 0x7c00
 
 	; Setup segment registers
@@ -91,6 +91,6 @@ err_msg		db	"Disk reading error!", 0x0A, 0x0D ,0
 wellcome	db	"Bootsector loaded.", 0x0A, 0x0D ,0
 press_key	db	"Press any key for load kernel.", 0x0a, 0x0d 0
 
-segment _bootmag
+segment .bootmag
 	; Bootsector magic
 	dw 0xaa55	;BIOS magic number for boot sector
