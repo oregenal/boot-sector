@@ -89,7 +89,7 @@ error:	mov ax, err_msg
 
 err_msg		db	"Disk reading error!", 0x0A, 0x0D ,0
 wellcome	db	"Bootsector loaded.", 0x0A, 0x0D ,0
-press_key	db	"Press any key for load kernel.", 0x0a, 0x0d 0
+press_key	db	"Press any key for load kernel.", 0x0a, 0x0d, 0
 
 segment .bootmag
 	; Bootsector magic
