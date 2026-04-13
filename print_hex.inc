@@ -37,3 +37,5 @@ _print_hex:
 	ret
 
 string	db	"0x0000", 0x0a, 0x0d, 0
+
+;; vim: set filetype=nasm:

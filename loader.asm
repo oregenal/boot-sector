@@ -94,3 +94,5 @@ press_key	db	"Press any key for load kernel.", 0x0a, 0x0d, 0
 segment .bootmag
 	; Bootsector magic
 	dw 0xaa55	;BIOS magic number for boot sector
+
+;; vim: set filetype=nasm:

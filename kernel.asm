@@ -48,3 +48,5 @@ start:	mov ax, string1
 string1	db	"Kernel loaded.", 0x0A, 0x0D, 0
 
 	times 512-($-$$) db 0
+
+; vim: ft=nasm

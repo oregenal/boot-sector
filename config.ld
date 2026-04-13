@@ -49,3 +49,5 @@ SECTIONS
 	}> KERNEL
 
 }
+
+/* vim: set filetype=ld:

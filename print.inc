@@ -24,3 +24,5 @@ _print:	push bp
 .exit:	pop si
 	pop bp
 	ret
+
+;; vim: set filetype=nasm:
